@@ -1,0 +1,80 @@
+<h1>Edit Product</h1>
+
+<form [formGroup]="productForm" (ngSubmit)="UpdateProduct()">
+
+  <div>
+    <label>Name:</label>
+    <input type="text" formControlName="name">
+    <div *ngIf="productForm.get('name')?.hasError('required') && productForm.get('name')?.touched" style="color: red;">ProductName is required</div>
+  </div>
+
+  <div>
+    <label>Description:</label>
+    <textarea formControlName="description"></textarea>
+    <div *ngIf="productForm.get('description')?.hasError('required') && productForm.get('description')?.touched" style="color: red;">ProductName is required</div>
+  </div>
+
+  <div>
+    <label>Image:</label>
+    <textarea formControlName="imageUrl"></textarea>
+
+  </div>
+
+  <div>
+    <label>Price:</label>
+    <input type="number" formControlName="price">
+    <div *ngIf="productForm.get('price')?.hasError('required') && productForm.get('price')?.touched" style="color: red;">Price is required</div>
+    <div *ngIf="productForm.get('price')?.hasError('min') && productForm.get('price')?.touched" style="color: red;">Price must be greater than 0</div>
+  </div>
+
+  <div>
+    <label>Category:</label>
+    <select formControlName="category">
+      <option value="" disabled selected>Select an option</option>
+      <option *ngFor="let option of dropdownData" [value]="option.id">
+        {{ option.name }}
+      </option>
+    </select>
+    <div *ngIf="productForm.get('category')?.hasError('required') && productForm.get('category')?.touched" style="color: red;">Category is required</div>
+  </div>
+
+  <div>
+    <label>InStock:</label>
+    <input type="checkbox" formControlName="inStock">
+  </div>
+
+  <h3>Variants</h3>
+  <div formArrayName="variants">
+
+
+    <div *ngFor="let variant of variantsArray.controls; let i = index" [formGroupName]="i">
+      <label>Color:</label>
+      <input type="text" formControlName="color">
+      <label>Size:</label>
+      <input type="text" formControlName="size">
+      <label>Price:</label>
+      <input type="number" formControlName="stock">
+      <button (click)="removeVariant(i)">Remove</button>
+    </div>
+  </div>
+  <button (click)="addVariant()">Add Variant</button>
+
+  <h3>Tags</h3>
+  <div formArrayName="tags">
+    <div *ngFor="let tag of tagsArray.controls; let i = index" [formGroupName]="i">
+      <input type="text" formControlName="tag">
+      <button (click)="removeTag(i)">Remove</button>
+    </div>
+  </div>
+  <button (click)="addTag()">Add Tag</button>
+
+  <h3>Additional Details</h3>
+  <div formGroupName="additionalDetails">
+    <label>Manufacturer:</label>
+    <input type="text" formControlName="manufacturer">
+    <label>Weight:</label>
+    <input type="text" formControlName="weight">
+  </div>
+
+  <button type="submit">Submit</button>
+</form>

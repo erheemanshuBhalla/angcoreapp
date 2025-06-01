@@ -1,0 +1,15 @@
+<h2>Product List</h2>
+<button [routerLink]="['/products/add']">Add</button>
+<ul>
+  <li *ngFor="let item of Products">
+    {{ item.name }}
+    <button [routerLink]="['/products/edit', item.id]">Edit</button>
+    <button [routerLink]="['/products', item.id, 'delete']">Delete</button>
+  </li>
+</ul>
+<select >
+  <option value="" disabled selected>Select an option</option>
+  <option *ngFor="let item of Products" [value]="item.name">
+    {{ item.name }}
+  </option>
+</select>
