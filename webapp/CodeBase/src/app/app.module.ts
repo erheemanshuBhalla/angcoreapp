@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -25,7 +26,12 @@ import { ProductsComponent } from './components/products/products.component';
 import { AddproductComponent } from './components/products/addproduct/addproduct.component';
 import { EditproductComponent } from './components/products/editproduct/editproduct.component';
 import { DetailsComponent } from './components/products/details/details.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbdSortableHeader } from './directives/table-sortable.directive';
 
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { SearchComponent } from './components/search/search.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,24 +41,31 @@ import { DetailsComponent } from './components/products/details/details.componen
     
     RegisterComponent,
     
-    ProductsComponent,
+    
           AddproductComponent,
           EditproductComponent,
-          DetailsComponent
+          DetailsComponent,
+          SearchComponent
+    
   ],
   imports: [
-   
-     BrowserModule,
+    NgMultiSelectDropDownModule.forRoot(), AutocompleteLibModule,
+    BrowserModule, 
     AppRoutingModule, MatchPasswordDirective,
     PasswordPatternDirective,
     ValidateUserNameDirective,
+    NgbdSortableHeader,
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       progressBar: true
     }),
-    FormsModule
+    FormsModule,
+    NgbModule,
+    ProductsComponent,
+    NgxSliderModule
+
   ],
   providers: [UserService, {
     provide: HTTP_INTERCEPTORS,

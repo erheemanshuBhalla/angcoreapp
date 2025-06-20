@@ -1,4 +1,4 @@
-<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()" (reset)="resetForm()">
 
   <div>
     <label>Name:</label>
@@ -10,6 +10,13 @@
     <label>Description:</label>
     <textarea formControlName="description"></textarea>
     <div *ngIf="productForm.get('description')?.hasError('required') && productForm.get('description')?.touched" style="color: red;">ProductName is required</div>
+  </div>
+
+  <div>
+    <label>Calendar:</label>
+    <input class="form-control" placeholder="yyyy-mm-dd"
+           name="dp" formControlName="myDate" ngbDatepicker #d="ngbDatepicker">
+    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
   </div>
 
   <div>
@@ -35,15 +42,70 @@
     </select>
     <div *ngIf="productForm.get('category')?.hasError('required') && productForm.get('category')?.touched" style="color: red;">Category is required</div>
   </div>
+  <div class="ng-autocomplete">
+    <label>Category Multi:</label>
+    <ng-autocomplete formControlName="myAutocompleteControl" [data]="categories"
+                     [searchKeyword]="keyword"
+                     placeholder="Enter the Country Name"
+                     (selected)='selectEvent($event)'
+                     (inputChanged)='onChangeSearch($event)'
+                     (inputFocused)='onFocused($event)'
+                     historyIdentifier="categories"
+                     [itemTemplate]="itemTemplate"
+                     [notFoundTemplate]="notFoundTemplate">
+    </ng-autocomplete>
+    <!-- Display validation error message -->
+    <div *ngIf="
+      productForm.get('myAutocompleteControl')?.invalid &&
+      productForm.get('myAutocompleteControl')?.touched
+    "
+         class="error-message">
+      This field is required.
+    </div>
+    <ng-template #itemTemplate let-item>
+      <a [innerHTML]="item.name"></a>
+    </ng-template>
 
+    <ng-template #notFoundTemplate let-notFound>
+      <div [innerHTML]="notFound"></div>
+    </ng-template>
+  </div>
+  
+  
+   <div>
+     <label>City</label>
+     <ng-multiselect-dropdown #multiSelect
+                              [placeholder]="'Select City'"
+                              [settings]="settings"
+                              [data]="data"
+                              [formControl]="f"
+                              
+                              [disabled]="false"
+                              [class.is-invalid]="productForm.get('multiname')?.hasError('required') && productForm.get('multiname')?.touched"
+                              (onFilterChange)="onFilterChange($event)"
+                              (onDropDownClose)="onDropDownClose($event)"
+                              (onSelect)="onItemSelect($event)"
+                              (onDeSelect)="onDeSelect($event)"
+                              (onSelectAll)="onSelectAll($event)"
+                              (onDeSelectAll)="onDeSelectAll($event)">
+     </ng-multiselect-dropdown>
+
+     <span *ngIf="productForm.get('multiname')?.hasError('required') && productForm.get('multiname')?.touched" style="color: red;">
+       City is required
+     </span>
+   </div>
   <div>
     <label>InStock:</label>
     <input type="checkbox" formControlName="inStock">
   </div>
+  <div>
+    <label>File:</label>
+    <input type="file" (change)="onFileSelected($event)" formControlName="file">
 
+  </div>
   <h3>Variants</h3>
   <div formArrayName="variants">
-    
+
 
     <div *ngFor="let variant of variantsArray.controls; let i = index" [formGroupName]="i">
       <label>Color:</label>
@@ -51,28 +113,29 @@
       <label>Size:</label>
       <input type="text" formControlName="size">
       <label>Price:</label>
-      <input type="number" formControlName="stock">
+      <input type="number" formControlName="price">
       <button (click)="removeVariant(i)">Remove</button>
     </div>
   </div>
-    <button (click)="addVariant()">Add Variant</button>
+  <button type="button" (click)="addVariant()">Add Variant</button>
 
-    <h3>Tags</h3>
-    <div formArrayName="tags">
-      <div *ngFor="let tag of tagsArray.controls; let i = index"  [formGroupName]="i">
-        <input type="text" [formControlName]="i">
-        <button (click)="removeTag(i)">Remove</button>
-      </div>
+  <h3>Tags</h3>
+  <div formArrayName="tags">
+    <div *ngFor="let tag of tagsArray.controls; let i = index" [formGroupName]="i">
+      <input type="text" [formControlName]="i">
+      <button  type="button" (click)="removeTag(i)">Remove</button>
     </div>
-    <button (click)="addTag()">Add Tag</button>
+  </div>
+  <button (click)="addTag()">Add Tag</button>
 
-    <h3>Additional Details</h3>
-    <div formGroupName="additionalDetails">
-      <label>Manufacturer:</label>
-      <input type="text" formControlName="manufacturer">
-      <label>Weight:</label>
-      <input type="text" formControlName="weight">
-    </div>
+  <h3>Additional Details</h3>
+  <div formGroupName="additionalDetails">
+    <label>Manufacturer:</label>
+    <input type="text" formControlName="manufacturer">
+    <label>Weight:</label>
+    <input type="text" formControlName="weight">
+  </div>
 
-    <button type="submit">Submit</button>
+  <button type="submit">Submit</button>
+  <input type="reset" value="Reset"> | <input type="button" value="Toggle Select All" (click)="multiSelect.toggleSelectAll()">
 </form>

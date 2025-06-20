@@ -30,8 +30,9 @@ namespace CoreAPI.Models
     }
     public class Variant
     {
-        public string color { get; set; }
-        public string size { get; set; }
+        
+        public int color { get; set; }
+        public int size { get; set; }
         public int stock { get; set; }
     }
 

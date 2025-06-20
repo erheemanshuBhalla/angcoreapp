@@ -29,7 +29,7 @@ namespace CoreAPI.Controllers
         {
             return _products;
         }
-       
+
 
         // GET api/<ProductController>/5
         [HttpGet("{id}")]
@@ -38,6 +38,13 @@ namespace CoreAPI.Controllers
             var response = _products.Single(x => x.Id == id);
             return Ok(response);
         }
+        //[HttpPost("{id}")]
+        //public List<Productmodel> GetProductsByCategories(int id=0)
+        //{
+        //    var response = _products.Where(x => x.category == id).ToList();
+        //    return response;
+        //}
+
 
         // POST api/<ProductController>
         [HttpPost]

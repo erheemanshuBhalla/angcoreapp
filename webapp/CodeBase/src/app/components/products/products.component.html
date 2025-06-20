@@ -1,6 +1,8 @@
 <h2>Product List</h2>
 <button [routerLink]="['/products/add']">Add</button>
-<ul>
+<a routerLink="/products/add/">Go to Page</a>
+
+<!--<ul>
   <li *ngFor="let item of Products">
     {{ item.name }}
     <button [routerLink]="['/products/edit', item.id]">Edit</button>
@@ -12,4 +14,60 @@
   <option *ngFor="let item of Products" [value]="item.name">
     {{ item.name }}
   </option>
-</select>
+</select>-->
+<form>
+  <div class="mb-3 row">
+    mb
+    <label for="table-complete-search" class="col-xs-3 col-sm-auto col-form-label">Full text search:</label>
+    <div class="col-xs-3 col-sm-auto">
+      <input id="table-complete-search"
+             type="text"
+             class="form-control"
+             name="searchTerm"
+             [(ngModel)]="_productsservice.searchTerm" />
+    </div>
+    @if (_productsservice.loading$ | async) {
+    <span class="col col-form-label">Loading...</span>
+    }
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <script src="../user/login/login.component.js"></script>
+        <th scope="col" sortable="name" (sort)="onSort($event)">Name</th>
+        <th scope="col" sortable="price" (sort)="onSort($event)">Price</th>
+        <th scope="col">InStock</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--// @for (item of Products; track item.name; let i = $index) {-->
+      @for (item of Products | async; track item.id; let i = $index) {
+      <tr>
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+          {{ item.name }}
+        </td>
+        <td>{{ item.price | number }}</td>
+        <td>{{ item.instock  }}</td>
+        <td>
+          <button [routerLink]="['/products/edit', item.id]">Edit</button>
+          <button [routerLink]="['/products', item.id, 'delete']">Delete</button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-between p-2">
+    <ngb-pagination [collectionSize]="(total | async)!" [(page)]="_productsservice.page" [pageSize]="_productsservice.pageSize">
+    </ngb-pagination>
+
+    <select class="form-select" style="width: auto" name="pageSize" [(ngModel)]="_productsservice.pageSize">
+      <option [ngValue]="2">2 items per page</option>
+      <option [ngValue]="4">4 items per page</option>
+      <option [ngValue]="6">6 items per page</option>
+    </select>
+  </div>
+</form>
