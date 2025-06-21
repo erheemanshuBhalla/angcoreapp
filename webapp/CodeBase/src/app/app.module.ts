@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+    import { CookieService } from 'ngx-cookie-service';
 
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { AppRoutingModule } from './app-routing.module';
@@ -32,6 +33,9 @@ import { NgbdSortableHeader } from './directives/table-sortable.directive';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { SearchComponent } from './components/search/search.component';
+import { CartComponent } from './components/cart/cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { PaymentdetailsComponent } from './paymentdetails/paymentdetails.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +49,10 @@ import { SearchComponent } from './components/search/search.component';
           AddproductComponent,
           EditproductComponent,
           DetailsComponent,
-          SearchComponent
+          SearchComponent,
+          CartComponent,
+          CheckoutComponent,
+          PaymentdetailsComponent
     
   ],
   imports: [
@@ -67,11 +74,11 @@ import { SearchComponent } from './components/search/search.component';
     NgxSliderModule
 
   ],
-  providers: [UserService, {
+  providers: [CookieService,UserService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
-  }],
+  }], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

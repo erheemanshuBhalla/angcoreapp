@@ -9,6 +9,8 @@ import { ProductsComponent } from './components/products/products.component';
 import { AddproductComponent } from './components/products/addproduct/addproduct.component';
 import { EditproductComponent } from './components/products/editproduct/editproduct.component';
 import { DetailsComponent } from './components/products/details/details.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { CartComponent } from './components/cart/cart.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/user/login', pathMatch: 'full' },
@@ -24,7 +26,8 @@ const routes: Routes = [
   { path: 'products/add', component: AddproductComponent },
   { path: 'products/:id', component: DetailsComponent },
   { path: 'products/edit/:id', component: EditproductComponent },
-  
+  { path: 'cart', component: CartComponent },
+  { path: 'checkout', component: CheckoutComponent },
   //{ path: 'items/delete/:id', component: ItemDetailsComponent }, // Delete an item (or use a separate component)
   /*{ path: 'Products', component: HomeComponent, canActivate: [AuthGuard] },*/
   { path: '**', redirectTo: '/user/login' } // Ensure this is the last route

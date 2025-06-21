@@ -54,7 +54,8 @@
         <td>{{ item.instock  }}</td>
         <td>
           <button [routerLink]="['/products/edit', item.id]">Edit</button>
-          <button [routerLink]="['/products', item.id, 'delete']">Delete</button>
+          <button [routerLink]="['/products/', item.id]">Details</button>
+         
         </td>
       </tr>
       }
