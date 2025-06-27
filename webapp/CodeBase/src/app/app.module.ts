@@ -35,7 +35,8 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { SearchComponent } from './components/search/search.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
-import { PaymentdetailsComponent } from './paymentdetails/paymentdetails.component';
+import { NavbarComponent } from './components/Shared/navbar/navbar.component'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,9 +51,10 @@ import { PaymentdetailsComponent } from './paymentdetails/paymentdetails.compone
           EditproductComponent,
           DetailsComponent,
           SearchComponent,
-          CartComponent,
-          CheckoutComponent,
-          PaymentdetailsComponent
+    CartComponent,
+    CheckoutComponent, NavbarComponent
+          
+          
     
   ],
   imports: [

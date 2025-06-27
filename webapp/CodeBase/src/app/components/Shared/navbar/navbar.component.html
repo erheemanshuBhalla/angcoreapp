@@ -1,0 +1,47 @@
+<!--<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand text-white">JWT Auth System</a>
+  <button [routerLink]="['/products']">Manage Products</button>
+  <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>
+</nav>-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Ng Ecommerce </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/products">Manage Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item" *ngIf="userDetails">
+        <a class="nav-link" href="#" (click)="onLogout()">Logout</a>
+      </li>
+
+      <li class="nav-item" *ngIf="userDetails==undefined">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+      <li class="nav-item" *ngIf="userDetails">
+        <a class="nav-link" href="#">{{userDetails.username}}</a>
+      </li>
+      <!--<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      User
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" *ngIf="userDetails; else loginblock">
+      <a class="dropdown-item" href="#">{{userDetails.username}}</a>
+      <button class="dropdown-item" (click)="onLogout()">Logout</button>
+    </div>
+    <ng-template #loginblock>
+      <a class="dropdown-item" href="/login">Login</a>
+    </ng-template>
+  </li>-->
+
+    </ul>
+  </div>
+</nav>

@@ -1,7 +1,4 @@
-<nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand text-white">JWT Auth System</a>
-  <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>
-</nav>
+<app-navbar></app-navbar>
 
 <div class="card m-5" style="width:18rem" *ngIf="userDetails">
   <ul class="list-group">
@@ -13,7 +10,7 @@
 
 <div class="col-md-12">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3" id="products_filter">
       <label>Filters</label>
       <!-- Autocomplete of Products Here -->
       <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
@@ -129,8 +126,8 @@
       </form>
       <!-- Autocomplete of Products Here -->
     </div>
-    <div class="col-md-9">
-     
+    <div class="col-md-9" id="products_list">
+
       <div class="row">
         @for (item of Products | async; track item.id; let i = $index) {
         <div class="col-md-4">

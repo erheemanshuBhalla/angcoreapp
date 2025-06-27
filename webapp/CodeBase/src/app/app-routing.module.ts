@@ -21,11 +21,11 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent }
     ]
   },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'products', component: ProductsComponent },
-  { path: 'products/add', component: AddproductComponent },
-  { path: 'products/:id', component: DetailsComponent },
-  { path: 'products/edit/:id', component: EditproductComponent },
+  { path: 'home', component: HomeComponent},
+  { path: 'products', component: ProductsComponent ,canActivate: [AuthGuard] },
+  { path: 'products/add', component: AddproductComponent, canActivate: [AuthGuard] },
+  { path: 'products/:id', component: DetailsComponent, canActivate: [AuthGuard] },
+  { path: 'products/edit/:id', component: EditproductComponent, canActivate: [AuthGuard] },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
   //{ path: 'items/delete/:id', component: ItemDetailsComponent }, // Delete an item (or use a separate component)
