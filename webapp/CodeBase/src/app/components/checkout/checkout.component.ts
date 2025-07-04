@@ -16,6 +16,7 @@ export class CheckoutComponent {
   promoprice: number = 5;
   constructor(private fb: FormBuilder,private cookieService: CookieService) { }
   ngOnInit(): void {
+    debugger;
     const existingCart = this.cookieService.get('shoppingCart');
     if (existingCart) {
       this.cartItems = JSON.parse(existingCart);

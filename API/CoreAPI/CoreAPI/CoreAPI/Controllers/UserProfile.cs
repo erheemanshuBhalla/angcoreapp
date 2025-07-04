@@ -18,9 +18,12 @@ namespace CoreAPI.Controllers
         {
             Usermodel model = new Usermodel();
             var accessToken = HttpContext.GetTokenAsync("access_token").Result;
-            var jwt_token = new JwtSecurityTokenHandler().ReadJwtToken(accessToken.ToString());
-            model.Username=jwt_token.Claims.SingleOrDefault(c => c.Type == "name").ToString().Split(":")[1].Trim();
-            model.EmailAddress = jwt_token.Claims.SingleOrDefault(c => c.Type == "email").ToString().Split(":")[1].Trim();
+            if (accessToken != null)
+            {
+                var jwt_token = new JwtSecurityTokenHandler().ReadJwtToken(accessToken.ToString());
+                model.Username = jwt_token.Claims.SingleOrDefault(c => c.Type == "name").ToString().Split(":")[1].Trim();
+                model.EmailAddress = jwt_token.Claims.SingleOrDefault(c => c.Type == "email").ToString().Split(":")[1].Trim();
+            }
             return model;
         }
 

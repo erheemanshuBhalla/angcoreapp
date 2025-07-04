@@ -1,15 +1,16 @@
 <app-navbar></app-navbar>
 
-<div class="card m-5" style="width:18rem" *ngIf="userDetails">
+<!--<div class="card m-5" style="width:18rem" *ngIf="userDetails">
   <ul class="list-group">
     <li class="list-group-item"><strong>Username : </strong>{{userDetails.username}}</li>
     <li class="list-group-item"><strong>Email Address : </strong>{{userDetails.emailAddress}}</li>
   </ul>
-</div>
+</div>-->
 
 
 <div class="col-md-12">
-  <div class="row">
+  <div class="row col-md-12">
+
     <div class="col-md-3" id="products_filter">
       <label>Filters</label>
       <!-- Autocomplete of Products Here -->
@@ -122,7 +123,7 @@
         <br /><br />
 
 
-        <button type="submit">Submit</button>
+        <!--<button class="btn btn-primary btn-lg float-end"  type="submit">Submit</button>-->
       </form>
       <!-- Autocomplete of Products Here -->
     </div>
@@ -137,7 +138,7 @@
               <h5 class="card-title">{{ item.name }} - <span>{{ item.price | number }}</span></h5>
               <p class="card-text">{{ item.description }}</p>
               <!--<a href="#" class="btn btn-primary">Buy Now</a>-->
-              <button [routerLink]="['/products/', item.id]">Buy</button>
+              <button class="btn btn-sm btn-primary float-end"  [routerLink]="['/products/', item.id]">Buy</button>
             </div>
           </div>
         </div>

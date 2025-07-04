@@ -17,6 +17,7 @@
           <div>
             <h6 class="my-0">{{item.name}}</h6>
             <small class="text-muted">Qty: {{item.quantity}}</small>
+            <small class="text-muted">, Color: {{item.color}}</small>
           </div>
           <span class="text-muted">${{item.price * item.quantity}}</span>
         </li>
@@ -182,7 +183,7 @@
           </div>
         </div>
         <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+        <button class="btn btn-primary btn-lg btn-block float-end" type="submit">Continue to checkout</button>
       </form>
     </div>
   </div>

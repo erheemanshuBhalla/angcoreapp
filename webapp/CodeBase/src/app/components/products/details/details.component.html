@@ -38,31 +38,32 @@
         <span class="ms-2">4.5 (120 reviews)</span>
       </div>
       <p class="mb-4">
-        Experience premium sound quality and industry-leading noise cancellation with these wireless
-        headphones. Perfect for music lovers and frequent travelers.
+        {{ ProductDetail.description }}
       </p>
       <div class="mb-4">
         <h5>Color:</h5>
         <div class="btn-group" role="group" aria-label="Color selection">
-          <input type="radio" class="btn-check" name="color" id="black" autocomplete="off" checked>
+          <input type="radio" class="btn-check" name="color" id="black"  value="Black" autocomplete="off" [(ngModel)]="selectedValue">
           <label class="btn btn-outline-dark" for="black">Black</label>
-          <input type="radio" class="btn-check" name="color" id="silver" autocomplete="off">
+          <input type="radio" class="btn-check" name="color" value="Silver" id="silver" autocomplete="off" [(ngModel)]="selectedValue">
           <label class="btn btn-outline-secondary" for="silver">Silver</label>
-          <input type="radio" class="btn-check" name="color" id="blue" autocomplete="off">
+          <input type="radio" class="btn-check" name="color" value="Blue" id="blue" autocomplete="off" [(ngModel)]="selectedValue">
           <label class="btn btn-outline-primary" for="blue">Blue</label>
         </div>
       </div>
       <div class="mb-4">
         <label for="quantity" class="form-label">Quantity:</label>
-        <input type="number" class="form-control" id="quantity" value="1" min="1" style="width: 80px;">
+        <!-- We are using Template Reference Variable Here to pass value to addtocart function in TS file -->
+        <input type="number" class="form-control" id="quantity" value="1" min="1" style="width: 80px;"  #quantity>
       </div>
-      <button class="btn btn-primary btn-lg mb-3 me-2" (click)="addToCart(ProductDetail)">
+      <button class="btn btn-primary btn-lg mb-3 me-2" (click)="addToCart(ProductDetail,quantity.value)">
         <i class="bi bi-cart-plus"></i> Add to Cart
       </button>
-      <button class="btn btn-default btn-lg mb-3 me-2" [routerLink]="['/products/', this.itemId]">Go to Cart</button>
+      <button class="btn btn-default btn-lg mb-3 me-2" [routerLink]="['/checkout/']">Go to Cart</button>
       <div class="mt-4">
         <h5>Key Features:</h5>
-        {{ ProductDetail.description }}
+        <strong>Manufacturer: {{ ProductDetail.additionalDetails.manufacturer}}</strong><br />
+        <strong>Weight: {{ ProductDetail.additionalDetails.weight}}</strong><br />
       </div>
     </div>
   </div>
