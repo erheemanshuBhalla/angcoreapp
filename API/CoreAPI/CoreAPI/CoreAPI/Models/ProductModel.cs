@@ -1,17 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+﻿using CoreAPI.Models;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+
+
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace CoreAPI.Models
 {
     [ValidateNever]
 
-     public class AdditionalDetails
+    public class AdditionalDetails
     {
         public string manufacturer { get; set; }
-        public int weight { get; set; }
+        public string weight { get; set; }
     }
 
     public class Productmodel
     {
+        public int sale_count { get; set; }
+        public bool isfeatured { get; set; }
+        public bool OnSale { get; set; }
         public int Id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
@@ -26,13 +33,13 @@ namespace CoreAPI.Models
     public class TTag
     {
         public string Tag { get; set; }
-        
+
     }
     public class Variant
     {
-        
-        public int color { get; set; }
-        public int size { get; set; }
+
+        public string color { get; set; }
+        public string size { get; set; }
         public int stock { get; set; }
     }
 
