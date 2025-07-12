@@ -1,7 +1,7 @@
 
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductsService } from '../../services/products.service';
 import { Product } from '../../Products';
@@ -25,19 +25,24 @@ export class StoreComponent {
   Products!: Observable<Product[]>;
   options: Options = { floor: 0, ceil: 10000, showOuterSelectionBars: true };
   minValue: number = 0;
-  maxValue: number = 1000;
+  maxValue: number = 10000;
   AmberMin: number = 41;
-  AmberMax: number = this.maxValue;
+  AmberMax: number = this.minValue;
   GreenMin: number = this.maxValue + 1;
   items = [{ name: 'Red', selected: false, id: 1 }, { name: 'Green', selected: false, id: 2 }, { name: 'Yellow', selected: false, id: 3 }];
   itemsSizes = [{ name: 'Big', selected: false, id: 1 }, { name: 'Large', selected: false, id: 2 }, { name: 'Small', selected: false, id: 3 }];
   categoryId!: number;
   selected_sizes!: any;
   selected_colors!: any;
+  itemId: number | null = null;
   constructor(private fb: FormBuilder, private router: Router,
-    private service: UserService, private _productsservice: ProductsService) { }
+    private service: UserService, private _productsservice: ProductsService, private route: ActivatedRoute,) { }
 
   ngOnInit() {
+    this.itemId = Number(this.route.snapshot.paramMap.get('id'));
+    if (this.itemId) {
+      this.categoryId = this.itemId;
+    }
     this.service.getUserProfile().subscribe(
       res => {
         this.userDetails = res;
@@ -52,6 +57,7 @@ export class StoreComponent {
       console.log(this.dropdownData);
     });
     this.setForm();
+    this.FilterResults();
   }
 
   onChangeSearch(search: string) {
@@ -164,11 +170,13 @@ export class StoreComponent {
   }
   public setForm() {
     this.productForm = this.fb.group({
-      myAutocompleteControl: new FormControl(''),
+      myAutocompleteControl: new FormControl(this.itemId),
       price: new FormControl(''),
       color: this.fb.array(this.items.map(() => new FormControl(false))),
       size: this.fb.array(this.itemsSizes.map(() => new FormControl(false))),
     });
+    this.productForm.controls['myAutocompleteControl'].setValue(this.itemId);
+    console.log(this.productForm);
     //this.loadContent = true;
   }
   onFocused(e: any) {

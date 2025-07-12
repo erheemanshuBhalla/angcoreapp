@@ -39,7 +39,8 @@ import { NavbarComponent } from './components/Shared/navbar/navbar.component';
 import { StoreComponent } from './components/store/store.component';
 import { BestSellerComponent } from './components/home/best-seller/best-seller.component';
 import { FeaturedProductsComponent } from './components/home/featured-products/featured-products.component';
-import { ProductsSaleComponent } from './components/home/products-sale/products-sale.component'
+import { ProductsSaleComponent } from './components/home/products-sale/products-sale.component';
+import { CategoryCardsComponent } from './components/home/category-cards/category-cards.component'
 
 @NgModule({
   declarations: [
@@ -56,7 +57,7 @@ import { ProductsSaleComponent } from './components/home/products-sale/products-
           DetailsComponent,
           SearchComponent,
     CartComponent,
-    CheckoutComponent, NavbarComponent, StoreComponent, BestSellerComponent, FeaturedProductsComponent, ProductsSaleComponent
+    CheckoutComponent, NavbarComponent, StoreComponent, BestSellerComponent, FeaturedProductsComponent, ProductsSaleComponent, CategoryCardsComponent
           
           
     
