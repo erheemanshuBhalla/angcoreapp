@@ -35,7 +35,11 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { SearchComponent } from './components/search/search.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
-import { NavbarComponent } from './components/Shared/navbar/navbar.component'
+import { NavbarComponent } from './components/Shared/navbar/navbar.component';
+import { StoreComponent } from './components/store/store.component';
+import { BestSellerComponent } from './components/home/best-seller/best-seller.component';
+import { FeaturedProductsComponent } from './components/home/featured-products/featured-products.component';
+import { ProductsSaleComponent } from './components/home/products-sale/products-sale.component'
 
 @NgModule({
   declarations: [
@@ -52,7 +56,7 @@ import { NavbarComponent } from './components/Shared/navbar/navbar.component'
           DetailsComponent,
           SearchComponent,
     CartComponent,
-    CheckoutComponent, NavbarComponent
+    CheckoutComponent, NavbarComponent, StoreComponent, BestSellerComponent, FeaturedProductsComponent, ProductsSaleComponent
           
           
     

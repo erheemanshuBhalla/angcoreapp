@@ -10,8 +10,8 @@ namespace CoreAPI.Controllers
     public class SearchViewModel
     {
         public int? categoryid { get; set; }
-        public int[]? sizes { get; set; }
-        public int[]? colors { get; set; }
+        public string[]? sizes { get; set; }
+        public string[]? colors { get; set; }
         public int min_price{get;set;}
         public int max_price { get; set; }
     }
@@ -34,9 +34,22 @@ namespace CoreAPI.Controllers
 
         // GET api/<SearchController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public List<Productmodel> Get(string id)
         {
-            return "value";
+            if(id=="BestSelling")
+            {
+                return _products.OrderByDescending(x => x.sale_count).Take(6).ToList();
+            }
+            else if (id == "OnSale")
+            {
+                return _products.Where(x=>x.OnSale==true).Take(6).ToList();
+            }
+            else if (id == "Featured")
+            {
+                return _products.Where(x=>x.isfeatured==true).Take(6).ToList();
+            }
+
+            return _products.Take(6).ToList();
         }
 
         [HttpPost]

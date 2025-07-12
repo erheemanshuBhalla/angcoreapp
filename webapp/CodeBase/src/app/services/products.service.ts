@@ -120,6 +120,18 @@ export class ProductsService {
     });*/
     return this.ObjData1;
   }
+
+  get_Products_component(id:string): Observable<any[]> {
+    //console.log(id);
+    const apiUrl = this.BaseURI + '/Search/'+id;
+    console.log(apiUrl);
+    
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    this.ObjData1 = this.http.get<Product[]>(apiUrl);
+    
+    return this.ObjData1;
+  }
   getProductDetails(id: number | null): any {
     return this.http.get<any>(this.BaseURI + '/Product/'+id);
   }

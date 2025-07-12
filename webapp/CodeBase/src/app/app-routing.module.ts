@@ -11,9 +11,10 @@ import { EditproductComponent } from './components/products/editproduct/editprod
 import { DetailsComponent } from './components/products/details/details.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CartComponent } from './components/cart/cart.component';
+import { StoreComponent } from './components/store/store.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/user/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: 'user', component: UserComponent,
     children: [
@@ -21,7 +22,8 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent }
     ]
   },
-  { path: 'home', component: HomeComponent},
+  { path: 'home', component: HomeComponent },
+  { path: 'store', component: StoreComponent },
   { path: 'products', component: ProductsComponent ,canActivate: [AuthGuard] },
   { path: 'products/add', component: AddproductComponent, canActivate: [AuthGuard] },
   { path: 'products/:id', component: DetailsComponent, canActivate: [AuthGuard] },

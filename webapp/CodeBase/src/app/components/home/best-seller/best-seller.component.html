@@ -1,0 +1,22 @@
+
+<div id="conta" *ngIf="(Products | async) as list; else noProducts">
+
+  <div class="row">
+    @for (item of Products | async; track item.id; let i = $index) {
+    <div class="col-md-4">
+      <div class="card" style="width: 18rem;">
+        <svg aria-label="Placeholder: Image cap" class="bd-placeholder-img card-img-top" height="180" preserveAspectRatio="xMidYMid slice" role="img" width="100%" xmlns="http://www.w3.org/2000/svg"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
+        <div class="card-body">
+          <h5 class="card-title">{{ item.name }} - <span>{{ item.price | number }}</span></h5>
+          <p class="card-text">{{ item.description }}</p>
+          <!--<a href="#" class="btn btn-primary">Buy Now</a>-->
+          <button class="btn btn-sm btn-primary float-end" [routerLink]="['/products/', item.id]">Buy</button>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>
+<ng-template #noProducts>
+  <p>No products available.</p>
+</ng-template>
