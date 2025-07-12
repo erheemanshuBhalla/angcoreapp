@@ -1,5 +1,3 @@
-<app-navbar></app-navbar>
-
 <!--<div class="card m-5" style="width:18rem" *ngIf="userDetails">
   <ul class="list-group">
     <li class="list-group-item"><strong>Username : </strong>{{userDetails.username}}</li>
@@ -12,14 +10,14 @@
   <div class="row col-md-12">
 
     <div class="col-md-3" id="products_filter">
-      <label>Filters</label>
+      <label><strong>Filters</strong></label><br />
       <!-- Autocomplete of Products Here -->
       <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
         <div class="ng-autocomplete">
           <label>Category</label>
           <ng-autocomplete formControlName="myAutocompleteControl" [data]="categories"
                            [searchKeyword]="keyword"
-                           placeholder="Enter the Country Name"
+                           placeholder="Choose Product Category"
                            (selected)='selectEvent($event)'
                            (inputChanged)='onChangeSearch($event)'
                            (inputFocused)='onFocused($event)'
@@ -40,7 +38,7 @@
             <div [innerHTML]="notFound"></div>
           </ng-template>
         </div>
-        <br /><br />
+        <br />
         <div class="price_range">
           <label>Price Range:</label>
           <ngx-slider formControlName="price" [(value)]="minValue"
@@ -52,74 +50,76 @@
                       (userChange)="onUserChange($event)"
                       (userChangeEnd)="onUserChangeEnd($event)"></ngx-slider>
         </div>
-        <br /><br />
+        <br />
         <div formArrayName="size">
+          <label>Size</label>
           <div *ngFor="let control of sizeArray.controls; let i = index">
             <input type="checkbox" [formControlName]="i" (change)="ChangeSize($event)">
             <label>{{ itemsSizes[i].name }}</label>
           </div>
         </div>
         <!--<div class="size">
-    <label>Choose Size:</label>
-    <div class="select-all-checkbox">
-      <div class="grid" style="display:inline-block;">
-        <input type="checkbox"
-               name="all"
-               [checked]="areAllSizesSelected"
-               (change)="toggleAllSizesSelection()">
-      </div>
-      <div style="display:inline-block;" class="selected-div"
-           [style.backgroundColor]="areAllSizesSelected? 'red': 'white' ">
-        Select All
-      </div>
-    </div>
-    <div class="grid"
-         *ngFor="let item of itemsSizes; let i = index;"  [formGroupName]="i">
-      <div style="display:inline-block;" class="selection">
-        <input formControlName="size" type="checkbox"
-               [(ngModel)]="item.selected"
-               [checked]="item.selected" (change)="ChangeSize($event)">
-      </div>
-      <div style="display:inline-block;" class="selected-div"
-           [style.backgroundColor]="item.selected ? 'red': 'white' ">
-        {{ item.name }}
-      </div>
-    </div>
-  </div>-->
-        <br /><br />
+          <label>Choose Size:</label>
+          <div class="select-all-checkbox">
+            <div class="grid" style="display:inline-block;">
+              <input type="checkbox"
+                     name="all"
+                     [checked]="areAllSizesSelected"
+                     (change)="toggleAllSizesSelection()">
+            </div>
+            <div style="display:inline-block;" class="selected-div"
+                 [style.backgroundColor]="areAllSizesSelected? 'red': 'white' ">
+              Select All
+            </div>
+          </div>
+          <div class="grid"
+               *ngFor="let item of itemsSizes; let i = index;"  [formGroupName]="i">
+            <div style="display:inline-block;" class="selection">
+              <input formControlName="size" type="checkbox"
+                     [(ngModel)]="item.selected"
+                     [checked]="item.selected" (change)="ChangeSize($event)">
+            </div>
+            <div style="display:inline-block;" class="selected-div"
+                 [style.backgroundColor]="item.selected ? 'red': 'white' ">
+              {{ item.name }}
+            </div>
+          </div>
+        </div>-->
+        <br />
         <div formArrayName="color">
+          <label>Color</label>
           <div *ngFor="let control of colorArray.controls; let i = index">
-            <input type="checkbox"  [formControlName]="i" (change)="ChangeColor($event)">
+            <input type="checkbox" [formControlName]="i" (change)="ChangeColor($event)">
             <label>{{ items[i].name }}</label>
           </div>
         </div>
         <!--<div class="color">
-    <label>Choose Color:</label>
-    <div class="select-all-checkbox">
-      <div class="grid" style="display:inline-block;">
-        <input type="checkbox"
-               name="all"
-               [checked]="areAllSelected"
-               (change)="toggleAllSelection()">
-      </div>
-      <div style="display:inline-block;" class="selected-div"
-           [style.backgroundColor]="areAllSelected? 'red': 'white' ">
-        Select All
-      </div>
-    </div>
-    <div class="grid"
-         *ngFor="let item of items; let i = index;" [formGroupName]="i">
-      <div style="display:inline-block;" class="selection">
-        <input formControlName="color" type="checkbox"
-               [(ngModel)]="item.selected"
-               [checked]="item.selected" (change)="ChangeColor($event)">
-      </div>
-      <div style="display:inline-block;" class="selected-div"
-           [style.backgroundColor]="item.selected ? 'red': 'white' ">
-        {{ item.name }}
-      </div>
-    </div>
-  </div>-->
+          <label>Choose Color:</label>
+          <div class="select-all-checkbox">
+            <div class="grid" style="display:inline-block;">
+              <input type="checkbox"
+                     name="all"
+                     [checked]="areAllSelected"
+                     (change)="toggleAllSelection()">
+            </div>
+            <div style="display:inline-block;" class="selected-div"
+                 [style.backgroundColor]="areAllSelected? 'red': 'white' ">
+              Select All
+            </div>
+          </div>
+          <div class="grid"
+               *ngFor="let item of items; let i = index;" [formGroupName]="i">
+            <div style="display:inline-block;" class="selection">
+              <input formControlName="color" type="checkbox"
+                     [(ngModel)]="item.selected"
+                     [checked]="item.selected" (change)="ChangeColor($event)">
+            </div>
+            <div style="display:inline-block;" class="selected-div"
+                 [style.backgroundColor]="item.selected ? 'red': 'white' ">
+              {{ item.name }}
+            </div>
+          </div>
+        </div>-->
         <br /><br />
 
 
@@ -128,22 +128,27 @@
       <!-- Autocomplete of Products Here -->
     </div>
     <div class="col-md-9" id="products_list">
+      <div id="conta" *ngIf="(Products | async) as list; else noProducts">
 
-      <div class="row">
-        @for (item of Products | async; track item.id; let i = $index) {
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem;">
-            <svg aria-label="Placeholder: Image cap" class="bd-placeholder-img card-img-top" height="180" preserveAspectRatio="xMidYMid slice" role="img" width="100%" xmlns="http://www.w3.org/2000/svg"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
-            <div class="card-body">
-              <h5 class="card-title">{{ item.name }} - <span>{{ item.price | number }}</span></h5>
-              <p class="card-text">{{ item.description }}</p>
-              <!--<a href="#" class="btn btn-primary">Buy Now</a>-->
-              <button class="btn btn-sm btn-primary float-end"  [routerLink]="['/products/', item.id]">Buy</button>
+        <div class="row">
+          @for (item of Products | async; track item.id; let i = $index) {
+          <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+              <svg aria-label="Placeholder: Image cap" class="bd-placeholder-img card-img-top" height="180" preserveAspectRatio="xMidYMid slice" role="img" width="100%" xmlns="http://www.w3.org/2000/svg"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
+              <div class="card-body">
+                <h5 class="card-title">{{ item.name }} - <span>{{ item.price | number }}</span></h5>
+                <p class="card-text">{{ item.description }}</p>
+                <!--<a href="#" class="btn btn-primary">Buy Now</a>-->
+                <button class="btn btn-sm btn-primary float-end" [routerLink]="['/products/', item.id]">Buy</button>
+              </div>
             </div>
           </div>
+          }
         </div>
-        }
       </div>
+      <ng-template #noProducts>
+        <p>No products available.</p>
+      </ng-template>
     </div>
   </div>
 </div>

@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
@@ -21,14 +22,14 @@ export class HomeComponent {
   keyword = 'name';
   public categories: any[] = [];
   Products!: Observable<Product[]>;
-  options: Options = {floor: 0,ceil: 10000,showOuterSelectionBars: true };
+  options: Options = { floor: 0, ceil: 10000, showOuterSelectionBars: true };
   minValue: number = 0;
-  maxValue: number = 0;
+  maxValue: number = 1000;
   AmberMin: number = 41;
   AmberMax: number = this.maxValue;
-  GreenMin: number  = this.maxValue + 1;
-  items = [{ name: 'Red', selected: false,id:1 },{ name: 'Green', selected: false,id:2 },{ name: 'Yellow', selected: false,id:3 } ];
-  itemsSizes = [{ name: 'Big', selected: false,id:1 },{ name: 'Large', selected: false,id:2 },{ name: 'Small', selected: false,id:3 }];
+  GreenMin: number = this.maxValue + 1;
+  items = [{ name: 'Red', selected: false, id: 1 }, { name: 'Green', selected: false, id: 2 }, { name: 'Yellow', selected: false, id: 3 }];
+  itemsSizes = [{ name: 'Big', selected: false, id: 1 }, { name: 'Large', selected: false, id: 2 }, { name: 'Small', selected: false, id: 3 }];
   categoryId!: number;
   selected_sizes!: any;
   selected_colors!: any;
@@ -55,27 +56,25 @@ export class HomeComponent {
   onChangeSearch(search: string) {
     // fetch remote data from here
     // And reassign the 'data' which is binded to 'data' property.
-    console.log("selected-");    console.log(search);
+    console.log("selected-"); console.log(search);
   }
 
- 
-  
   onLogout() {
     localStorage.removeItem('token');
     this.router.navigate(['/user/login']);
   }
-  minValueChange(event:any): void {
-   // console.log(event);
+  minValueChange(event: any): void {
+    // console.log(event);
     //this.RedMax = event;
     //this.AmberMin = event + 1;
   }
-  maxValueChange(event:any): void {
+  maxValueChange(event: any): void {
     //console.log(event);
     //if (event)
-      //this.GreenMin = event + 1;
+    //this.GreenMin = event + 1;
     //this.GreenMax = event + 1;
   }
-  
+
   toggleAllSizesSelection() {
     this.areAllSizesSelected = !this.areAllSelected;
     this.itemsSizes = this.itemsSizes.map(item => ({ ...item, selected: this.areAllSizesSelected }));
@@ -85,7 +84,7 @@ export class HomeComponent {
     this.items = this.items.map(item => ({ ...item, selected: this.areAllSelected }));
   }
 
- 
+
   selectEvent(item: any) {
     // do something with selected item
     console.log("selected-");
@@ -105,7 +104,7 @@ export class HomeComponent {
   get colorArray() {
     return this.productForm.get('color') as FormArray;
   }
-  ChangeSize(event: any) :void{
+  ChangeSize(event: any): void {
     //const isChecked = event.target.checked;
     //console.log('Checkbox is checked:', isChecked);
     // Perform actions based on checkbox state
@@ -115,14 +114,14 @@ export class HomeComponent {
     const selectedValuessizes = this.productForm.value.size
       .map((checked: boolean, index: number) => checked ? this.itemsSizes[index] : null)
       .filter((value: string | null) => value !== null);
-    const sizes = selectedValuessizes.map((user: { id: number; }) => user.id);
+    const sizes = selectedValuessizes.map((user: { name: string; }) => user.name);
 
     console.log(sizes);
     this.selected_sizes = sizes;
     this.FilterResults();
     /* End checkbox colors */
   }
-  ChangeColor(event: any) :void{
+  ChangeColor(event: any): void {
     //const isChecked = event.target.checked;
     //console.log('Checkbox is checked:', isChecked);
     // Perform actions based on checkbox state
@@ -131,13 +130,13 @@ export class HomeComponent {
     const selectedValues = this.productForm.value.color
       .map((checked: boolean, index: number) => checked ? this.items[index] : null)
       .filter((value: string | null) => value !== null);
-    const colors = selectedValues.map((user: { id: number; }) => user.id);
+    const colors = selectedValues.map((user: { name: string; }) => user.name);
     console.log(colors);
     this.selected_colors = colors;
     this.FilterResults();
     /* End checkbox colors */
 
-   
+
   }
   FilterResults() {
     console.log(this.selected_colors);
@@ -146,7 +145,7 @@ export class HomeComponent {
     console.log(this.AmberMax);
     console.log(this.GreenMin);
     this.Products = this._productsservice.getProducts(this.categoryId, this.GreenMin, this.AmberMax, this.selected_colors, this.selected_sizes)
-    
+
   }
   onSubmit() {
     debugger;
@@ -183,5 +182,5 @@ export class HomeComponent {
     //console.log(price_range);
   }
 
-  
+
 }
