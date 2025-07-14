@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { Product } from '../../../Products';
 import { ProductsService } from '../../../services/products.service';
@@ -11,9 +11,11 @@ import { ProductsService } from '../../../services/products.service';
 })
 export class FeaturedProductsComponent {
   Products!: Observable<Product[]>;
+  //Input Decorator
+  @Input() type = "";
   constructor(private _productsservice: ProductsService) { }
 
   ngOnInit() {
-    this.Products = this._productsservice.get_Products_component("Featured");
+    this.Products = this._productsservice.get_Products_component(this.type);
   }
 }
