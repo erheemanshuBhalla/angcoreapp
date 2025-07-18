@@ -1,7 +1,7 @@
 <div class="conntainer">
   <h1 class="text-center">Welcome to Ng Commerce Store </h1>
 
-  <h3><strong>Store Categories</strong></h3>
+  <h3 #subheadinghome><strong #Categoriesheading></strong></h3>
   <div id="best_selling_products">
     @defer {
     <app-category-cards></app-category-cards>
@@ -14,20 +14,20 @@
     <p>Failed to load large component.</p>
     }
   </div>
-
-  <h3><strong>Best Selling Products</strong></h3>
+  <hr />
+  <h3 #subheadinghome><strong #BestSellingHeading></strong></h3>
   <div id="best_selling_products">
-    <app-best-seller  type="BestSelling"></app-best-seller>
+    <app-best-seller type="BestSelling"></app-best-seller>
   </div>
-
-  <h3><strong>Products  On Sale</strong></h3>
+  <hr />
+  <h3 #subheadinghome><strong #OnsaleHeading></strong></h3>
   <div id="on_sale_products">
-    <app-products-sale  type="OnSale"></app-products-sale>
+    <app-products-sale type="OnSale"></app-products-sale>
   </div>
-
-  <h3><strong>Featured Products</strong></h3>
+  <hr />
+  <h3 #subheadinghome><strong #FeaturedHeading></strong></h3>
   <div id="featured_products">
-    <app-featured-products  type="Featured"></app-featured-products>
+    <app-featured-products type="Featured"></app-featured-products>
   </div>
 
 </div>
