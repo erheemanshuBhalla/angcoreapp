@@ -1,11 +1,11 @@
-<div class="card" style="width: 18rem;">
+<div appHoverEffect appHighlight="lightblue" class="card" style="width: 18rem;">
   
   <ng-content select="[card-image]"></ng-content>
   <div class="card-body">
     <ng-content select=".card-title"></ng-content>
     <ng-content select=".card-text"></ng-content>
     <ng-content select=".buybutton"></ng-content>
-
+    <ng-content ></ng-content>
     <!--<h5 class="card-title">{{ item.name }} - <span>{{ item.price | number }}</span></h5>
   <p class="card-text">{{ item.description }}</p>-->
     <!--<a href="#" class="btn btn-primary">Buy Now</a>-->

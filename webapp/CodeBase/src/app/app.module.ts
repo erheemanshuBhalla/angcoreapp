@@ -41,7 +41,9 @@ import { BestSellerComponent } from './components/home/best-seller/best-seller.c
 import { FeaturedProductsComponent } from './components/home/featured-products/featured-products.component';
 import { ProductsSaleComponent } from './components/home/products-sale/products-sale.component';
 import { CategoryCardsComponent } from './components/home/category-cards/category-cards.component';
-import { CardComponent } from './components/card/card.component'
+import { CardComponent } from './components/card/card.component';
+import { HighlightDirective } from './directives/highlight.directive';
+import { HoverEffectDirective } from './directives/hover-effect.directive'
 
 @NgModule({
   declarations: [
@@ -79,7 +81,7 @@ import { CardComponent } from './components/card/card.component'
     FormsModule,
     NgbModule,
     ProductsComponent,
-    NgxSliderModule
+    NgxSliderModule, HighlightDirective, HoverEffectDirective
 
   ],
   providers: [CookieService,UserService, {

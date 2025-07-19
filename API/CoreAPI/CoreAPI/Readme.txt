@@ -10,3 +10,6 @@
 10. Form with different controls - textbox,textarea,dropdown,upload file, date,radio,checkbox, (multiselect category)
 11. using Patch Value on Edit Product page
 12. Webapi Response types - OK, BadRequest and NotFound
+13. Content Projection Using ngcontent
+14. Using ViewChild 
+15. Using Viewcontent with <ngcontent> COntent projection
