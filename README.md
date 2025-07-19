@@ -13,5 +13,6 @@ Angular Concepts that we are using in this project -
 11. using Patch Value on Edit Product page
 12. Webapi Response types - OK, BadRequest and NotFound
 13. Content Projection Using ngcontent
-14. Using ViewChild 
-15. Using Viewcontent with <ngcontent> COntent projection
+14. Using ViewChild & View Child to make styling changes
+15. Using Viewcontent with <ngcontent> COntent projection to change content styling
+16. Parent Component project content in child component using <create-card> child component for product display cards everywhere
