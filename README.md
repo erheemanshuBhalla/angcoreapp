@@ -1,4 +1,5 @@
-Ecommerce Project Built Using .net core webapi + Angular 17+
+Ecommerce Project Built Using .net core webapi + Angular 17+. We tried using most of the angular stuff by example in this project. we are still updating this.
+
 Angular Concepts that we are using in this project - 
 
 1. Reactive Forms & Validations
