@@ -1,3 +1,4 @@
+Ecommerce Project Built Using .net core webapi + Angular 17+
 Angular Concepts that we are using in this project - 
 
 1. Reactive Forms & Validations
