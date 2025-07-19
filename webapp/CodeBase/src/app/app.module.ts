@@ -40,7 +40,8 @@ import { StoreComponent } from './components/store/store.component';
 import { BestSellerComponent } from './components/home/best-seller/best-seller.component';
 import { FeaturedProductsComponent } from './components/home/featured-products/featured-products.component';
 import { ProductsSaleComponent } from './components/home/products-sale/products-sale.component';
-import { CategoryCardsComponent } from './components/home/category-cards/category-cards.component'
+import { CategoryCardsComponent } from './components/home/category-cards/category-cards.component';
+import { CardComponent } from './components/card/card.component'
 
 @NgModule({
   declarations: [
@@ -57,7 +58,7 @@ import { CategoryCardsComponent } from './components/home/category-cards/categor
           DetailsComponent,
           SearchComponent,
     CartComponent,
-    CheckoutComponent, NavbarComponent, StoreComponent, BestSellerComponent, FeaturedProductsComponent, ProductsSaleComponent, CategoryCardsComponent
+    CheckoutComponent, NavbarComponent, StoreComponent, BestSellerComponent, FeaturedProductsComponent, ProductsSaleComponent, CategoryCardsComponent, CardComponent
           
           
     
