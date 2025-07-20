@@ -8,10 +8,12 @@
     } @loading (minimum 10s) {
     <p>Please Waiting! Loading....</p>
     } @placeholder {
-    <p>Placeholder content</p>
+    <ng-container *ngTemplateOutlet="loadinginprogress"></ng-container>
+
     }
     @error {
-    <p>Failed to load large component.</p>
+    <ng-container *ngTemplateOutlet="loadfailed"></ng-container>
+
     }
   </div>
   <hr />
@@ -31,3 +33,10 @@
   </div>
 
 </div>
+<ng-template #loadinginprogress>
+  <p>Category Loading in Progress</p>
+</ng-template>
+
+<ng-template #loadfailed>
+  <p>Failed to load Product Categories.</p>
+</ng-template>
