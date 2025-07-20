@@ -1,3 +1,5 @@
+Ecommerce Project Built Using .net core webapi + Angular 17+. We tried using most of the angular stuff by example in this project. we are still updating this.
+
 Angular Concepts that we are using in this project - 
 
 1. Reactive Forms & Validations
@@ -18,3 +20,4 @@ Angular Concepts that we are using in this project -
 16. Parent Component project content in child component using <create-card> child component for product display cards everywhere
 17. Using @defer, @loading, @placeholder, @error for loading home page sale products or categories.
 18. Added Hostbind and Hostlistener Directives and Using them.
+19. Added Ngcontainer, Ngtemplate with reference variable and ngtemplateoutput on HomeComponent
