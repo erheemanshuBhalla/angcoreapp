@@ -3,6 +3,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using CoreAPI.Controllers;
 using Microsoft.AspNetCore.Mvc;
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +42,11 @@ builder.Services.AddCors(options =>
         });
 });
 
+// Add Ocelot + JSON config
+builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
+
+builder.Services.AddOcelot();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -66,7 +73,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-
+await app.UseOcelot(); // Ocelot pipeline
 
 app.Run();
 
