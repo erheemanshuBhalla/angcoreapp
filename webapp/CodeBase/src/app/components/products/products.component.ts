@@ -6,8 +6,8 @@ import { AsyncPipe, DecimalPipe } from '@angular/common';
 //import { Component, QueryList, ViewChildren } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
-import { Product } from '../../Products';
-import { PRODUCTDATA } from '../../ProductData';
+import { Product } from '../../Interface/Products';
+import { PRODUCTDATA } from '../../Data/ProductData';
 import { NgbdSortableHeader, SortEvent } from '../../directives/table-sortable.directive';
 import { FormsModule } from '@angular/forms';
 import { NgbHighlight, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';

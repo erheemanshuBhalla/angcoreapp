@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { Product } from '../../../Products';
+import { Product } from '../../../Interface/Products';
 import { ProductsService } from '../../../services/products.service';
 
 @Component({
