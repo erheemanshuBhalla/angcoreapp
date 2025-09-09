@@ -21,3 +21,8 @@ Angular Concepts that we are using in this project -
 17. Using @defer, @loading, @placeholder, @error for loading home page sale products or categories.
 18. Added Hostbind and Hostlistener Directives and Using them.
 19. Added Ngcontainer, Ngtemplate with reference variable and ngtemplateoutput on HomeComponent
+    
+WebAPI Concepts
+1. Adding Onion Architecture to webapi project project
+2. Implementing Microservices Architecture
+3. Using Ocelot.json in API Gateway project for Proper Microservices Styled Architecture Implementation                                                  
